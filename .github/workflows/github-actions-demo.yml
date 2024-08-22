@@ -3,7 +3,7 @@ run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
 on: [push]
 
 jobs:
-  Explore-GitHub-Actions1:
+  RunPushOnMain:
     if: github.ref_name == 'main'
     runs-on: ubuntu-latest
     steps:
@@ -18,7 +18,7 @@ jobs:
         run: |
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
-  Explore-GitHub-Actions2:
+  RunPushOnDevelop:
     if: github.ref_name == 'develop'
     runs-on: ubuntu-latest
     steps:
