@@ -30,11 +30,11 @@ jobs:
     # Map a step output to a job output
     steps:
       - id: step1
-        run: echo "first=FIRST_STEP" >> "$GITHUB_OUTPUT"
+        run: echo "first=FIRST_STEP" >> $GITHUB_OUTPUT
       - id: step2
-        run: echo "second=SECOND_STEP" >> "$GITHUB_OUTPUT"
+        run: echo "second=SECOND_STEP" >> $GITHUB_OUTPUT
       - id: step3
-        run: echo "third=third${{ steps.step2.outputs.second }}" >> "$GITHUB_OUTPUT"
+        run: echo "third=third${{ steps.step2.outputs.second }}" >> $GITHUB_OUTPUT
   Test-OutputsVariables:
     needs: Test-Outputs
     name: Test Output Variables
