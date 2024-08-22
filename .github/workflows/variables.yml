@@ -17,6 +17,6 @@ jobs:
         run: echo "job env = $Greeting"
       - name: echo repository variable
         run: echo "repository env = ${{vars.REPO_VAL}}"
-      # - name: echo undefined variable
-      #   if: ${{ vars.UNDEF == ''}}
-      #   run: echo "undefind variable $UNDEF"
+      - name: echo undefined variable
+        if: vars.UNDEF == ''
+        run: echo "undefind variable $UNDEF"
