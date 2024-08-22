@@ -4,6 +4,11 @@ on: [push]
 env:
   DAY_OF_WEEK: Monday
 
+# https://docs.github.com/ja/actions/writing-workflows/choosing-what-your-workflow-does/control-the-concurrency-of-workflows-and-jobs
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   Test-Variables_Development:
     name: 🎁 Test Variables (Development)
