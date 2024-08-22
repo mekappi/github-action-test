@@ -5,7 +5,7 @@ env:
   DAY_OF_WEEK: Monday
 
 jobs:
-  Test-Variables:
+  Test-Variables_Development:
     name: 🎁 Test Variables
     environment: development
     runs-on: ubuntu-latest
@@ -23,6 +23,12 @@ jobs:
       - name: echo undefined variable
         if: vars.UNDEF == ''
         run: echo "undefind variable $UNDEF"
+  Test-Variables_Production:
+    environment: production
+    runs-on: ubuntu-latest
+    steps:
+      - name: echo repository environment variable
+        run: echo "repository env = ${{vars.REPO_ENV_VAL}}"
   Test-Outputs:
     name: 🖼️ Output
     runs-on: ubuntu-latest
