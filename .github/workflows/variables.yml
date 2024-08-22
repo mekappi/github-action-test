@@ -15,3 +15,8 @@ jobs:
         run: echo "workflow env = ${{env.DAY_OF_WEEK}}"
       - name: echo job env
         run: echo "job env = $Greeting"
+      - name: echo repository variable
+        run: echo "repository env = ${{vars.REPO_VAL}}"
+      # - name: echo undefined variable
+      #   if: ${{ vars.UNDEF == ''}}
+      #   run: echo "undefind variable $UNDEF"
