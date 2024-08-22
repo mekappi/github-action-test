@@ -20,3 +20,19 @@ jobs:
       - name: echo undefined variable
         if: vars.UNDEF == ''
         run: echo "undefind variable $UNDEF"
+  Test-Outputs:
+    name: 🖼️ Output
+    runs-on: ubuntu-latest
+    # Map a step output to a job output
+    steps:
+      - id: first_step
+        run: echo "FIRST STEP"
+      - id: second_step
+        run: echo "SECOND STEP"
+  Test-OutputsVariables:
+    needs: Test-Outputs
+    name: Test Output Variables
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo ${{needs.Test-Outputs.outputs.first_step}}
+      - run: echo ${{needs.Test-Outputs.outputs.second_step}}
