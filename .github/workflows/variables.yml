@@ -6,7 +6,7 @@ env:
 
 jobs:
   Test-Variables_Development:
-    name: 🎁 Test Variables
+    name: 🎁 Test Variables (Development)
     environment: development
     runs-on: ubuntu-latest
     env:
@@ -20,15 +20,20 @@ jobs:
         run: echo "repository val = ${{vars.REPO_VAL}}"
       - name: echo repository environment variable
         run: echo "repository env = ${{vars.REPO_ENV_VAL}}"
+      - name: echo repository environment secret
+        run: echo "repository env secret = ${{secrets.REPO_ENV_SECRET}}"
       - name: echo undefined variable
         if: vars.UNDEF == ''
         run: echo "undefind variable $UNDEF"
   Test-Variables_Production:
+    name: 🎁 Test Variables (Production)
     environment: production
     runs-on: ubuntu-latest
     steps:
       - name: echo repository environment variable
         run: echo "repository env = ${{vars.REPO_ENV_VAL}}"
+      - name: echo repository environment secret
+        run: echo "repository env secret = ${{secrets.REPO_ENV_SECRET}}"
   Test-Outputs:
     name: 🖼️ Output
     runs-on: ubuntu-latest
