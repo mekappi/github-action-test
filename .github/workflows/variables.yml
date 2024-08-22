@@ -10,6 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       Greeting: Hello
+    environment: development
     steps:
       - name: echo workflow env
         run: echo "workflow env = ${{env.DAY_OF_WEEK}}"
@@ -17,6 +18,8 @@ jobs:
         run: echo "job env = $Greeting"
       - name: echo repository variable
         run: echo "repository env = ${{vars.REPO_VAL}}"
+      - name: echo repository environment variable
+        run: echo "repository env variable ${{env.REPO_ENV_VAL}}"
       - name: echo undefined variable
         if: vars.UNDEF == ''
         run: echo "undefind variable $UNDEF"
