@@ -45,4 +45,4 @@ jobs:
       - name: output second step
         run: echo ${{needs.Test-Outputs.outputs.second_step}}
       - name: output third step
-        run: echo ${{needs.Test-Outputs.outputs.second_step}}
+        run: echo ${{needs.Test-Outputs.outputs.third_step}}
