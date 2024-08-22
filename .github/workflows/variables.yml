@@ -24,17 +24,17 @@ jobs:
     name: 🖼️ Output
     runs-on: ubuntu-latest
     outputs:
-      first_step: ${{ steps.step1.outputs }}
-      second_step: ${{ steps.step2.outputs }}
-      third_step: ${{ steps.step3.outputs }}
+      first_step: ${{ steps.step1.outputs.first }}
+      second_step: ${{ steps.step2.outputs.second }}
+      third_step: ${{ steps.step3.outputs.third }}
     # Map a step output to a job output
     steps:
       - id: step1
-        run: echo "FIRST STEP"
+        run: echo "first=FIRST_STEP" >> "$GITHUB_OUTPUT"
       - id: step2
-        run: echo "SECOND STEP"
+        run: echo "second=SECOND_STEP" >> "$GITHUB_OUTPUT"
       - id: step3
-        run: echo "THIRD ${{ steps.step2.outputs }}"
+        run: echo "third=third${{ steps.step2.outputs.second }}" >> "$GITHUB_OUTPUT"
   Test-OutputsVariables:
     needs: Test-Outputs
     name: Test Output Variables
@@ -43,4 +43,6 @@ jobs:
       - name: output first step
         run: echo ${{needs.Test-Outputs.outputs.first_step}}
       - name: output second step
+        run: echo ${{needs.Test-Outputs.outputs.second_step}}
+      - name: output third step
         run: echo ${{needs.Test-Outputs.outputs.second_step}}
