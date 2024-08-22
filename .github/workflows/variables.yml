@@ -1,6 +1,9 @@
 name: Variable Test
 on: [push]
 
+env:
+  DAY_OF_WEEK: Monday
+
 jobs:
   Test-Variables:
     name: 🎁 Test Variables
@@ -8,6 +11,7 @@ jobs:
     env:
       Greeting: Hello
     steps:
-      - name: echo
-        run: echo "workflow env = ${{env.DAY_OF_WEEK}}" |
-          echo "job env = $Greeting"
+      - name: echo workflow env
+        run: echo "workflow env = ${{env.DAY_OF_WEEK}}"
+      - name: echo job env
+        run: echo "job env = $Greeting"
