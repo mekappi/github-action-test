@@ -1,0 +1,13 @@
+name: Variable Test
+on: [push]
+
+jobs:
+  Test-Variables:
+    name: 🎁 Test Variables
+    runs-on: ubuntu-latest
+    env:
+      Greeting: Hello
+    steps:
+      - name: echo
+        run: echo "workflow env = ${{env.DAY_OF_WEEK}}" |
+          echo "job env = $Greeting"
